@@ -18,11 +18,17 @@ This lab I work on building a REST API behind its catalogue with Express 5.
 
 ---
 ## 3. PORT Environment Variables
-
+- The API runs at http://localhost:4000. Set PORT in .env to use a different port.
 
 ---
 ## 4. List of the Routes
-
+| Method | Path | What it does |
+|--------|------|--------------|
+| GET | /api/tools | Every tool. `?category=garden` keeps only one category. |
+| GET | /api/tools/:id | One tool, or 404. |
+| POST | /api/tools | Create a tool (201), or 400 with invalid fields. |
+| PUT | /api/tools/:id | Replace a tool’s fields (200), 400 or 404. |
+| DELETE | /api/tools/:id | Remove a tool (204), or 404. |
 
 ---
 ## 5. AI Use
@@ -39,3 +45,4 @@ If AI tools used
 ## 6. Credit
 - Name anyone who helped you and what they helped with
 - Name any tutorials/website you followed closely
+- Used the cpan212-fall-2026/labs/lab-2-starter folder from professor Dor github page to help set up and get a head start in lab 2
