@@ -36,8 +36,19 @@ toolsRouter.get('/', (req, res) => {
 
 // TODO (you): STEP 3. GET /api/tools/:id sends one tool.
 //   Start with: toolsRouter.get('/:id', (req, res) => { ... });
-//   req.params.id is the id from the URL. tools.find(...) gives you the tool, or undefined.
-//   Found: respond with { data: tool }. Not found: respond 404 with { error: { message: 'Tool not found' } }.
+toolsRouter.get('/:id', (req, res) => { 
+  //   req.params.id is the id from the URL. tools.find(...) gives you the tool, or undefined.
+  const id = req.params.id;
+  const tool = tools.find(t => t.id === id);
+  
+  //   Found: respond with { data: tool }. Not found: respond 404 with { error: { message: 'Tool not found' } }.
+  if (!tool) {
+    return res.status(404).json({
+      error: { message: 'Tool not found' }
+    });
+  }
+  res.json({ data: tool });
+});
 
 // TODO (you): STEP 5. POST /api/tools creates a tool.
 //   Start with: toolsRouter.post('/', validateTool, (req, res) => { ... });
