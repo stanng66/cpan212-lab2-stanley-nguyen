@@ -11,11 +11,27 @@ export const toolsRouter = Router();
 toolsRouter.get('/', (req, res) => {
   // TODO (you): STEP 2. Filter by category.
   //   req.query.category holds the value from ?category=garden, or undefined when the URL has none.
+  const category = req.query.category;
   //   - No category: send every tool, like this route does now.
+  if (!category) {
+    return res.json({ data: tools });
+  }
   //   - A category that isn't in CATEGORIES: respond 400 with
-  //     { error: { message: 'Invalid query', details: { category: 'category must be one of: power, hand, garden, cleaning' } } }
+  if (!CATEGORIES.includes(category)) {
+    return res.status(400).json ({
+      //     { error: { message: 'Invalid query', details: { category: 'category must be one of: power, hand, garden, cleaning' } } }
+      error: {
+        message: 'Invalid query',
+        details: {
+          category: `category must be one of: ${CATEGORIES.join(', ')}`
+        }
+      }
+    });
+  }
   //   - Otherwise: send only the tools in that category. tools.filter(...) builds that list.
-  res.json({ data: tools });
+  const filtered = tools.filter(tool => tool.category === category);
+  return res.json({ data: filtered});
+  // res.json({ data: tools });
 });
 
 // TODO (you): STEP 3. GET /api/tools/:id sends one tool.
