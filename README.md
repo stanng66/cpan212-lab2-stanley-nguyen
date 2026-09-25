@@ -32,8 +32,8 @@ This lab I work on building a REST API behind its catalogue with Express 5.
 
 ---
 ## 5. AI Use
-- Microsoft Copilot to help figure out and learn how to use bruno to create collection connect, and test
-- 
+- Microsoft Copilot to help figure out and learn how to use bruno (Did not have to use bruno yet after reading the updated lab 2)
+- Used Copilot to understand certain syntax of codes every so often and small errors I created in my code 
 
 ---
 ## 6. Credit
