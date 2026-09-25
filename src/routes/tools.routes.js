@@ -23,7 +23,7 @@ toolsRouter.get('/', (req, res) => {
       error: {
         message: 'Invalid query',
         details: {
-          category: `category must be one of: ${CATEGORIES.join(', ')}`
+          category: `category must be one of: ${CATEGORIES.join(', ')}`   // ${CATEGORIES.join(', ')} refrencess the import { tools, CATEGORIES } from '../data/tools.js';
         }
       }
     });

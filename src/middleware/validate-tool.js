@@ -23,14 +23,26 @@ export function validateTool(req, res, next) {
 
   // TODO (you): STEP 4a. category must be one of CATEGORIES.
   //   CATEGORIES.includes(body.category) is true for a valid category.
+  if (!CATEGORIES.includes(body.category)) {
+    errors.category = 'category must be one of: power, hand, garden, cleaning';
+  }
 
   // TODO (you): STEP 4b. condition must be one of CONDITIONS.
+  if(!CONDITIONS.includes(body.condition)) {
+    errors.condition = 'condition must be of: new, good, worn';
+  }
 
   // TODO (you): STEP 4c. available must be the boolean true or false. The string "true" is invalid.
   //   typeof body.available === 'boolean' is true only for a real boolean.
+  if (typeof body.available !== 'boolean') {
+    errors.available = 'available must be the boolean true or false.';
+  }
 
   // TODO (you): STEP 4d. maxLoanDays must be a whole number from 1 to 14.
   //   Number.isInteger(body.maxLoanDays) is false for 2.5 and for "3".
+  if (!Number.isInteger(body.maxLoanDays) || body.maxLoanDays < 1 ||body.maxLoanDays > 14) {
+    error.maxLoanDays = 'maxLoanDays must be a whole number from 1 to 14.';
+  }
 
   if (Object.keys(errors).length > 0) {
     return res.status(400).json({ error: { message: 'Validation failed', details: errors } });
