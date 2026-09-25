@@ -41,7 +41,7 @@ export function validateTool(req, res, next) {
   // TODO (you): STEP 4d. maxLoanDays must be a whole number from 1 to 14.
   //   Number.isInteger(body.maxLoanDays) is false for 2.5 and for "3".
   if (!Number.isInteger(body.maxLoanDays) || body.maxLoanDays < 1 ||body.maxLoanDays > 14) {
-    error.maxLoanDays = 'maxLoanDays must be a whole number from 1 to 14.';
+    errors.maxLoanDays = 'maxLoanDays must be a whole number from 1 to 14.';
   }
 
   if (Object.keys(errors).length > 0) {

@@ -75,6 +75,13 @@ toolsRouter.put('/:id', validateTool, (req, res) => {
 
 // TODO (you): STEP 7. DELETE /api/tools/:id removes a tool.
 //   Start with: toolsRouter.delete('/:id', (req, res) => { ... });
-
-//   tools.findIndex(...) gives the tool's position, or -1 when it isn't there (respond 404).
-//   tools.splice(index, 1) removes it. Then res.status(204).end() sends "No Content" with no body.
+toolsRouter.delete('/:id', (req, res) => {
+  const index = tools.findIndex((tool) => tool.id === req.params.id);
+  //   tools.findIndex(...) gives the tool's position, or -1 when it isn't there (respond 404).
+  if (index === -1) {
+    return res.status(404).json({ error: { message: 'Tool not found' } });
+  }
+  //   tools.splice(index, 1) removes it. Then res.status(204).end() sends "No Content" with no body.
+  tools.splice(index, 1);
+  res.status(204).end();
+});
