@@ -50,9 +50,14 @@ toolsRouter.get('/:id', (req, res) => {
 
 // TODO (you): STEP 5. POST /api/tools creates a tool.
 //   Start with: toolsRouter.post('/', validateTool, (req, res) => { ... });
-//   validateTool runs first, so inside your function req.body is already checked and cleaned.
-//   Build the tool as { id: randomUUID(), ...req.body }, push it onto tools,
-//   and respond 201 with { data: tool }.
+toolsRouter.post('/', validateTool, (req, res) => {
+  //   validateTool runs first, so inside your function req.body is already checked and cleaned.
+  const tool = { id: randomUUID(), ...req.body };
+  //   Build the tool as { id: randomUUID(), ...req.body }, push it onto tools,
+  tools.push(tool);
+  //   and respond 201 with { data: tool }.
+  res.status(201).json({ data: tool });
+});
 
 // TODO (you): STEP 6. PUT /api/tools/:id replaces a tool's five fields.
 //   Start with: toolsRouter.put('/:id', validateTool, (req, res) => { ... });
