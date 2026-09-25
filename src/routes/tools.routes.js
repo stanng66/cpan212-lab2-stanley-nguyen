@@ -61,11 +61,20 @@ toolsRouter.post('/', validateTool, (req, res) => {
 
 // TODO (you): STEP 6. PUT /api/tools/:id replaces a tool's five fields.
 //   Start with: toolsRouter.put('/:id', validateTool, (req, res) => { ... });
-//   Find the tool like in step 3 (404 when it isn't there).
-//   Object.assign(tool, req.body) copies the five new fields onto it and keeps its id.
-//   Respond 200 with { data: tool }.
+toolsRouter.put('/:id', validateTool, (req, res) => {
+  const tool = tools.find((tool) => tool.id === req.params.id);
+  //   Find the tool like in step 3 (404 when it isn't there).
+  if (!tool) {
+    return res.status(404).json({ error: { message: 'Tool not found' } });
+  }
+  //   Object.assign(tool, req.body) copies the five new fields onto it and keeps its id.
+  Object.assign(tool, req.body);
+  //   Respond 200 with { data: tool }.
+  res.json({ data: tool });
+});
 
 // TODO (you): STEP 7. DELETE /api/tools/:id removes a tool.
 //   Start with: toolsRouter.delete('/:id', (req, res) => { ... });
+
 //   tools.findIndex(...) gives the tool's position, or -1 when it isn't there (respond 404).
 //   tools.splice(index, 1) removes it. Then res.status(204).end() sends "No Content" with no body.
