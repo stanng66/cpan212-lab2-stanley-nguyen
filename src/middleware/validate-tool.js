@@ -35,7 +35,7 @@ export function validateTool(req, res, next) {
   // TODO (you): STEP 4c. available must be the boolean true or false. The string "true" is invalid.
   //   typeof body.available === 'boolean' is true only for a real boolean.
   if (typeof body.available !== 'boolean') {
-    errors.available = 'available must be the boolean true or false.';
+    errors.available = 'available must be true or false.';
   }
 
   // TODO (you): STEP 4d. maxLoanDays must be a whole number from 1 to 14.

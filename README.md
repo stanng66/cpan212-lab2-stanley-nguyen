@@ -32,17 +32,9 @@ This lab I work on building a REST API behind its catalogue with Express 5.
 
 ---
 ## 5. AI Use
-If You didn't use any
-- "No AI tools used."
-
-If AI tools used
-- example: GitHub Copilot for auto-complete
-- example: Microsoft Copilot for debugging help
-- example: Copilot for explaining error messages
-- example: Any other specific situations needing AI tools
+- Microsoft Copilot to help figure out and learn how to use bruno to create collection connect, and test
+- 
 
 ---
 ## 6. Credit
-- Name anyone who helped you and what they helped with
-- Name any tutorials/website you followed closely
 - Used the cpan212-fall-2026/labs/lab-2-starter folder from professor Dor github page to help set up and get a head start in lab 2

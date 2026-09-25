@@ -22,24 +22,22 @@ toolsRouter.get('/', (req, res) => {
       //     { error: { message: 'Invalid query', details: { category: 'category must be one of: power, hand, garden, cleaning' } } }
       error: {
         message: 'Invalid query',
-        details: {
-          category: `category must be one of: ${CATEGORIES.join(', ')}`   // ${CATEGORIES.join(', ')} refrencess the import { tools, CATEGORIES } from '../data/tools.js';
-        }
-      }
+        details: { category: 'category must be one of: power, hand, garden, cleaning'
+        },
+      },
     });
   }
   //   - Otherwise: send only the tools in that category. tools.filter(...) builds that list.
-  const filtered = tools.filter(tool => tool.category === category);
-  return res.json({ data: filtered});
-  // res.json({ data: tools });
+  const matching = tools.filter(tool => tool.category === category);
+  return res.json({ data: matching });
 });
 
 // TODO (you): STEP 3. GET /api/tools/:id sends one tool.
 //   Start with: toolsRouter.get('/:id', (req, res) => { ... });
 toolsRouter.get('/:id', (req, res) => { 
   //   req.params.id is the id from the URL. tools.find(...) gives you the tool, or undefined.
-  const id = req.params.id;
-  const tool = tools.find(t => t.id === id);
+  // const id = req.params.id;
+  const tool = tools.find((tool) => tool.id === req.params.id);
   
   //   Found: respond with { data: tool }. Not found: respond 404 with { error: { message: 'Tool not found' } }.
   if (!tool) {
