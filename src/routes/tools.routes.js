@@ -22,8 +22,7 @@ toolsRouter.get('/', (req, res) => {
       //     { error: { message: 'Invalid query', details: { category: 'category must be one of: power, hand, garden, cleaning' } } }
       error: {
         message: 'Invalid query',
-        details: { category: 'category must be one of: power, hand, garden, cleaning'
-        },
+        details: { category: 'category must be one of: power, hand, garden, cleaning' },
       },
     });
   }
@@ -36,14 +35,11 @@ toolsRouter.get('/', (req, res) => {
 //   Start with: toolsRouter.get('/:id', (req, res) => { ... });
 toolsRouter.get('/:id', (req, res) => { 
   //   req.params.id is the id from the URL. tools.find(...) gives you the tool, or undefined.
-  // const id = req.params.id;
   const tool = tools.find((tool) => tool.id === req.params.id);
   
   //   Found: respond with { data: tool }. Not found: respond 404 with { error: { message: 'Tool not found' } }.
   if (!tool) {
-    return res.status(404).json({
-      error: { message: 'Tool not found' }
-    });
+    return res.status(404).json({ error: { message: 'Tool not found' }});
   }
   res.json({ data: tool });
 });
